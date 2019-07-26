@@ -17,7 +17,7 @@ ENV BUILD_TOOLS_VERSIONS build-tools-27.0.3,build-tools-28.0.3
 ENV ANDROID_EXTRAS extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 
-RUN apt-get install -y git bash unzip wget && \
+RUN apt-get install -y git ssh bash unzip wget && \
     mkdir -p /opt/android-sdk-linux && cd /opt \
     && wget -q http://dl.google.com/android/repository/tools_r${SDK_TOOLS_VERSION}-linux.zip -O android-sdk-tools.zip \
      && unzip -q android-sdk-tools.zip -d ${ANDROID_HOME} \
