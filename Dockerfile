@@ -1,11 +1,9 @@
 FROM picoded/ubuntu-openjdk-8-jdk:16.04
 
 ENV NODE_VERSION 10.16.3
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.0/install.sh | bash && \
-  . /root/.nvm/nvm.sh && \
-  nvm install $NODE_VERSION
-ENV NODE_PATH /root/.nvm/v$NODE_VERSION/lib/node_modules
-ENV PATH      /root/.nvm/v$NODE_VERSION/bin:$PATH
+RUN npm install -g n && \
+  n $NODE_VERSION
+
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && apt-get install -y --no-install-recommends yarn
