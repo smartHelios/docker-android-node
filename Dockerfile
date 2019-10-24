@@ -1,6 +1,6 @@
 FROM picoded/ubuntu-openjdk-8-jdk:16.04
 
-ENV NODE_VERSION 10.16.3
+ENV NODE_VERSION 12.13.0
 RUN npm install -g n && \
   n $NODE_VERSION
 
