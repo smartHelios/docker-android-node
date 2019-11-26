@@ -1,8 +1,11 @@
 FROM picoded/ubuntu-openjdk-8-jdk:16.04
 
-ENV NODE_VERSION 12.13.0
+ENV NODE_VERSION 12.13.1
 RUN npm install -g n && \
   n $NODE_VERSION
+
+RUN echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf && \
+  cat /proc/sys/fs/inotify/max_user_watches
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
